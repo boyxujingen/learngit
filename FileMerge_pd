@@ -1,0 +1,9 @@
+import pandas as pd
+import os
+name_list=os.listdir(r'F:\biodata\GSE48213_RAW')
+fram_list=[pd.read_table(r'F:\biodata\GSE48213_RAW/%s'%name) for name in name_list]
+fram=fram_list[0]
+for i in range(1,len(fram_list)):
+    fram=pd.merge(fram,fram_list[i])
+fram.to_csv(r'F:\biodata\GSE\result.csv',index=False)
+                     
